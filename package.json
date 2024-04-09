@@ -1,0 +1,20 @@
+{
+  "name": "meeting-x-transcribe",
+  "version": "1.0.0",
+  "description": "This App will help you to summarize minutes of the meeting.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-apps/meet": "^0.1.1",
+    "@google-cloud/local-auth": "^2.1.0",
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
+    "form-data": "^4.0.0"
+  }
+}
