@@ -27,13 +27,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     document.getElementById('summarize_button').addEventListener('click', function() {
         const fileInput = document.getElementById('file_input');
+        const loader = document.querySelector('.loader'); // Assuming you have a loader element in your HTML
+    
         if (fileInput.files.length === 0) {
             alert('Please provide a file first.');
         } else {
+            // Show the loader
+            loader.style.display = 'block';
+    
+            console.log("file input", fileInput);
             const file = fileInput.files[0];
+            console.log(file);
             const formData = new FormData();
             formData.append('file', file);
-
             fetch('/summarize', {
                 method: 'POST',
                 body: formData
@@ -42,11 +48,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             .then(data => {
                 console.log(data);
                 // Here you can update the UI with the summary data
-                // For example, if you have a div with id="summary" to display the summary:
                 document.getElementById('summary').textContent = data.summary;
             })
             .catch(error => {
                 console.error('Error:', error);
+            })
+            .finally(() => {
+                // Hide the loader after the fetch request is completed or if an error occurs
+                loader.style.display = 'none';
             });
         }
     });
@@ -81,6 +90,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // Assuming you have a function to process the file
         // For example, send it to the server via AJAX
         // uploadToServer(file);
+        
     }
 });
 

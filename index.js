@@ -14,6 +14,7 @@ app.use(fileUpload());
 app.use(express.static('public'));
 
 app.post('/summarize', (req, res) => {
+    console.log("summarixe called", req.files.file);
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('No files were uploaded.');
     }
@@ -35,7 +36,8 @@ app.post('/summarize', (req, res) => {
     axios.post('https://api.apyhub.com/ai/summarize-documents/file', formData, { headers: requestHeaders })
         .then(apiResponse => {
             // Assuming the API returns JSON with a summary field
-            res.send({ summary: apiResponse.data.summary });
+            console.log(apiResponse.data.data.summary);
+            res.send({ summary: apiResponse.data.data.summary });
         })
         .catch(error => {
             console.error('Error calling the AI Summarize API:', error);
