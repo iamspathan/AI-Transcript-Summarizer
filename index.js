@@ -29,7 +29,7 @@ app.post('/summarize', (req, res) => {
     // Set up the request headers, including the dynamic headers from form-data
     const requestHeaders = {
         ...formData.getHeaders(),
-        'apy-token': 'APY0fp0wB7eK6PgABfXjXkiYb5jFyBusSJGpUinCDf2kmyNRO7w5YpwDUUbYJ6agMXc'
+        'apy-token': 'ADD-YOUR-SECRET-APY-TOKE-HERE'
     };
 
     // Call the AI Summarize API
